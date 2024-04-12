@@ -1,0 +1,16 @@
+swagger: "2.0"
+info:
+  description: "Lambdaコンテナイメージ用API Gateway"
+  title: ${title}
+schemes:
+  - "https"
+paths:
+  /diff:
+     get:
+      responses: {}
+      x-amazon-apigateway-integration:
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:${aws_region_name}:lambda:path/2015-03-31/functions/arn:aws:lambda:${aws_region_name}:${aws_account}:function:${lambda_pict_diff_function_name}:Prod/invocations"
+        passthroughBehavior: "when_no_match"
+        timeoutInMills: 29000
+        type: "aws_proxy"
